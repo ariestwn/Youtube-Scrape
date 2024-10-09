@@ -21,6 +21,10 @@ This script fetches YouTube video data using the YouTube API and stores it in a 
 4. Replace `API_KEY` with your YouTube Data API key.
 5. Save and run the script to populate your spreadsheet with video data.
 
+#### Feature
+1. Search by Channel ID
+2. Search by keyword
+
 #### DEMO
 
 [![Youtube to Spreadsheet](https://github.com/user-attachments/assets/aef1bd53-110f-4ac9-ad7b-da3545fc2eaa)](https://github.com/user-attachments/assets/a2376443-6572-459d-ac59-e5f369b2be48)
