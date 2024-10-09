@@ -21,6 +21,11 @@ This script fetches YouTube video data using the YouTube API and stores it in a 
 4. Replace `API_KEY` with your YouTube Data API key.
 5. Save and run the script to populate your spreadsheet with video data.
 
+#### DEMO
+
+[![Youtube to Spreadsheet](https://github.com/user-attachments/assets/aef1bd53-110f-4ac9-ad7b-da3545fc2eaa)](https://github.com/user-attachments/assets/a2376443-6572-459d-ac59-e5f369b2be48)
+
+
 ### Script 2: Browser Console Script
 
 #### Overview:
@@ -32,6 +37,10 @@ This script scrapes YouTube video data directly from the browser console and cop
 3. Go to the `Console` tab.
 4. Paste the code from `browser_script.js` and hit Enter.
 5. The data will be copied to your clipboard.
+
+#### Demo
+
+[![Youtube to TSV](https://github.com/user-attachments/assets/6a7d5dd5-6406-4f49-8e2a-488b87971c14)](https://github.com/user-attachments/assets/a78c2770-c943-4789-9c44-d770aa5963a6)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
