@@ -27,8 +27,8 @@ This script fetches YouTube video data using the YouTube API and stores it in a 
 This script scrapes YouTube video data directly from the browser console and copies it to your clipboard.
 
 #### Setup Instructions:
-1. Open YouTube in your browser.
-2. Press `F12` to open Developer Tools.
+1. Open Specific YouTube channel in your browser, scroll all the video until the end.
+2. Press `F12` or press `⌥⌘`+`i` in Mac to open Developer Tools.
 3. Go to the `Console` tab.
 4. Paste the code from `browser_script.js` and hit Enter.
 5. The data will be copied to your clipboard.
