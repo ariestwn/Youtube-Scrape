@@ -6,35 +6,52 @@ const videoDetails = Array.from(videos).map(video => {
     const titleElement = video.querySelector('#video-title');
     const viewsElement = video.querySelector('#metadata-line .inline-metadata-item');
     const dateElement = viewsElement?.nextElementSibling;
-    const urlElement = video.querySelector('a#thumbnail');
+    
+    // Find the length of the video, if available
+    const lengthElement = video.querySelector('span.ytd-thumbnail-overlay-time-status-renderer');
+    const lengthText = lengthElement?.textContent.trim() || 'N/A';  // Getting length text
 
     return {
-        title: titleElement?.textContent.trim(),
-        views: viewsElement?.textContent.trim(),
-        publishedDate: dateElement?.textContent.trim(),
-        url: urlElement?.href
+        title: titleElement?.textContent.trim() || 'N/A',
+        views: viewsElement?.textContent.trim() || 'N/A',
+        publishedDate: dateElement?.textContent.trim() || 'N/A',
+        length: lengthText,  // Include video length
     };
 });
 
-// Convert the array to CSV format
-let csvContent = "Title,Views,Published Date,URL\n";
-videoDetails.forEach(video => {
-    csvContent += `"${video.title}","${video.views}","${video.publishedDate}","${video.url}"\n`;
-});
+// Function to convert JSON data to TSV format
+const convertToTSV = (data) => {
+    const header = 'Title\tViews\tPublished Date\tLength'; // Updated the header to include Length
+    const rows = data.map(item => {
+        // Use tab characters to separate values
+        return `${item.title}\t${item.views}\t${item.publishedDate}\t${item.length}`;
+    });
+    // Join header and rows with new line character
+    return [header, ...rows].join('\n');
+};
 
-// Create a Blob from the CSV content
-const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+// Convert video details to TSV
+const tsvData = convertToTSV(videoDetails);
 
-// Create a link element for download
-const link = document.createElement("a");
-const url = URL.createObjectURL(blob);
-link.setAttribute("href", url);
-link.setAttribute("download", "video_details.csv");
-link.style.visibility = 'hidden';
-document.body.appendChild(link);
+// Copy TSV data to clipboard
+const copyToClipboard = (text) => {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    
+    try {
+        document.execCommand('copy');
+        console.log('TSV data copied to clipboard!');
+    } catch (err) {
+        console.error('Could not copy TSV data: ', err);
+    }
+    
+    document.body.removeChild(textarea);
+};
 
-// Programmatically click the link to trigger the download
-link.click();
+// Optional: Log the result
+console.log(videoDetails);
 
-// Remove the link from the document
-document.body.removeChild(link);
+// Copy the TSV data to clipboard
+copyToClipboard(tsvData);
